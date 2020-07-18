@@ -6,3 +6,11 @@ def tower_of_hanoi(no_of_disks, source_rod=1, destination_rod=3):
         tower_of_hanoi(no_of_disks-1, source_rod, 6-source_rod-destination_rod) #Recurcive Leap of Faith
         print("move disk number {} from tower {} to tower {}".format(no_of_disks, source_rod, destination_rod))
         tower_of_hanoi(no_of_disks-1, 6-source_rod-destination_rod, destination_rod)
+
+def digit_to_bitstr(num):
+    '''Solving digit to bit strings using Recurssion'''
+    if (num==0):
+        return []
+    if (num==1):
+        return ['0','1']
+    return [digit+bitstr for digit in digit_to_bitstr(1) for bitstr in digit_to_bitstr(num-1)]
