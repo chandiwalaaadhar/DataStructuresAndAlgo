@@ -27,15 +27,30 @@ def check_palindrome(word):
         return True
     return False
 
-def permute(list_, start_idx, end_idx):
+def permute(list_, start_idx):
     '''Calculating Permutations of an Input list'''
-    if (start_idx==end_idx):
+    if (start_idx==len(list_)-1):
         print (toList(list_)) #Helper Function
     else:
         for i in range(start_idx, len(list_), 1):
             list_[start_idx], list_[i]= list_[i], list_[start_idx]
-            permute(list_, start_idx+1, end_idx) #Recursive Leap of Faith
+            permute(list_, start_idx+1) #Recursive Leap of Faith
             list_[start_idx], list_[i]= list_[i], list_[start_idx] #Backtracking 
 def toList(list_):
     '''Helper Function for permute()'''
     return (''.join(list_))
+
+def is_list(list_):
+    '''Helper Functin for deepReverse()'''
+    return isinstance(list_, list)
+def deepReverse(deepList):
+
+    '''Approach to reverse a list with nested lists
+    Input: [1, [2,3], 4, [5,6]]
+    Output: [[6, 5], 4, [3, 2], 1]'''
+    
+    deepList.reverse()
+    for i in deepList:
+        if is_list(i):
+            deepReverse(i)
+    return deepList
