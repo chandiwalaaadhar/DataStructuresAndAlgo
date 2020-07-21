@@ -57,6 +57,25 @@ class SinglyLinkedList(object):
             newNode.next=current
         self.length+=1
 
+    def delAtBeg(self):
+        if (self.head!=None):
+            current=self.head
+            self.head=current.next
+            self.length-=1
+        else:
+            print('Empty List')
+
+    def delFromEnd(self):
+        if (self.head.next==None):
+            self.head=None
+
+        if(self.head!=None):
+            current=self.head
+            while(current.next.next!=None):
+                current=current.next
+            current.next=None
+            self.length-=1
+
 
     def printList(self):
         '''Function to Traverse through the List and Print all Elements'''
@@ -70,3 +89,11 @@ class SinglyLinkedList(object):
         '''Function to Print Length of list'''
 
         print("The Length of the Linked List is %d" %self.length)
+
+if __name__ == "__main__":
+    linkedlist1=SinglyLinkedList()
+    linkedlist1.insertAtBeg(10)
+    
+    #linkedlist1.delAtBeg()
+    linkedlist1.delFromEnd()
+    linkedlist1.printList()
