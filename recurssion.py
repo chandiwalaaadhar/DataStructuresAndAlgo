@@ -95,7 +95,19 @@ def keypad_combinations(num):
                 result.append(i+j)
         return result
 
+def power_set(arr, subset, len):
+    if (len==0):
+        print (subset)
+        return
+    subset.append(arr[len-1])
+    power_set(arr, subset, len-1)
+
+    subset.pop()
+    power_set(arr, subset, len-1)
 
 if __name__ == "__main__":
     #permute(['a','d','a','h','r','a'], 0)
     #print(keypad_combinations(23))
+    #subset=[]
+    #arr=[1,2,3]
+    #print(power_set(arr, subset, len(arr)))
