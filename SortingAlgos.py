@@ -55,3 +55,12 @@ def partition(arr, low, high):
     arr[i+1],arr[high]=arr[high],arr[i+1]
     return(i+1)
             
+def selectionSort(arr):
+    '''Function to Implement Selection Sort'''
+    for i in range(len(arr)): 
+        min_idx = i 
+        for j in range(i+1, len(arr)): 
+            if arr[min_idx] > arr[j]: 
+                min_idx = j  
+        arr[i], arr[min_idx] = arr[min_idx], arr[i] 
+    return arr
