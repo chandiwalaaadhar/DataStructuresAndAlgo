@@ -6,10 +6,19 @@ class Stack:
         self.A=[None]*capacity
     def push(self,data):
         if(self.top+1==self.capacity):
-            print("stack Overflow")
+            print("Trying to resize")
+            self.resize()
+        if(self.isFull()):
+            print('stack overflow')
             return
         self.top+=1
         self.A[self.top]=data
+    def resize(self):
+        self.capacity=self.capacity*2
+        newArr=[None]*self.capacity
+        for i in range(self.top+1):
+            newArr[i]=self.A[i]
+        self.A = newArr
     def pop(self):
         if(self.top==-1):
             print("stack underflow")
